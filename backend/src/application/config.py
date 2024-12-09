@@ -1,3 +1,4 @@
+from typing import List
 from pydantic import BaseModel
 
 class MovieResponse(BaseModel):
@@ -10,3 +11,15 @@ class MovieResponse(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class ProducerInterval(BaseModel):
+    producer: str
+    interval: int
+    previousWin: int
+    followingWin: int
+
+
+class ProducerIntervalResponse(BaseModel):
+    min: List[ProducerInterval]
+    max: List[ProducerInterval]

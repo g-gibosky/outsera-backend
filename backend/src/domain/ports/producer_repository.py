@@ -7,3 +7,11 @@ class ProducerRepository(ABC):
     @abstractmethod
     def save(self, producer: Producer) -> Producer:
         pass
+
+    @abstractmethod
+    def get_min_intervals(self):
+        pass
+
+    @abstractmethod
+    def get_max_intervals(self):
+        pass
