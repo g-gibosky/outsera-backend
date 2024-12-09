@@ -66,6 +66,7 @@ project_root/
 
 2. Code Quality
    - Implement stricter type checking
+   - Make a single SQL query with the full result
    - Convert SQL query to ORM
 
 ## Contact
