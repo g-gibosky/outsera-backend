@@ -33,14 +33,14 @@ class CsvLoader:
 
     @staticmethod
     def load_movies(file_path: str) -> Tuple[List[Movie], List[Producer]]:
-        absolute_path = os.path.join(os.path.dirname(__file__), "../../../data/movielist.csv")
+        absolute_path = f"/app/data/{file_path}"
         df = pd.read_csv(absolute_path, sep=';')
         movies = []
         all_producers = set()
-        
+
         for _, row in df.iterrows():
             producer_names = CsvLoader._split_producers(row['producers'])
-            
+
             movie = Movie(
                 id=None,
                 year=row['year'],
@@ -50,16 +50,16 @@ class CsvLoader:
                 producers=[]  # TODO: POpulate Later
             )
             movies.append(movie)
-            
+
             all_producers.update(producer_names)
-        
+
         producers = [Producer(id=None, name=name) 
                     for name in sorted(all_producers) 
                     if name]
-        
+
         for i, row in df.iterrows():
             movies[i].producer_names = CsvLoader._split_producers(row['producers'])
-            
+
         return movies, producers
 
     @staticmethod
@@ -80,7 +80,7 @@ class CsvLoader:
             "Andrew Bergman and Mike Lobell",
             "Ann Carli Avi Arad, Isaac Larian and Steven Paul"
         ]
-        
+
         for test_case in test_cases:
             result = CsvLoader._split_producers(test_case)
             print(f"\nInput: {test_case}")

@@ -1,17 +1,17 @@
 version: '3.8'
 
 services:
-  frontend:
-    build: 
-      context: ./movie-app-angular
-      dockerfile: Dockerfile
-    ports:
-      - "4200:4200"
-    volumes:
-      - ./movie-app-angular:/app
-      - /app/node_modules
-    depends_on:
-      - backend
+  # frontend:
+  #   build: 
+  #     context: ./movie-app-angular
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "4200:4200"
+  #   volumes:
+  #     - ./movie-app-angular:/app
+  #     - /app/node_modules
+  #   depends_on:
+  #     - backend
 
   backend:
     build: 
@@ -21,6 +21,6 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
-      - ./data:/app/data
+      - ./backend/data:/app/data
     environment:
       - DATABASE_URL=sqlite:///./movies.db
