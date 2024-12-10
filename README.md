@@ -33,6 +33,10 @@ cp movielist.csv backend/data/
 ```bash
 docker-compose up --build
 ```
+4. Tests:
+```bash
+pytest tests/integration/test_startup_and_intervals.py -v
+```
 
 The application will be available at:
 - Backend: http://localhost:8000
